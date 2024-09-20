@@ -9,7 +9,11 @@ public class professor extends user {
     public professor(String ID, String pass) {
         super(ID, pass);
         String[] parts = ID.split("\\d+");
-        this.name = "Prof." + parts[0];
+        if (parts.length == 0) {
+            this.name = "Prof.Unknown"; // Default value if no alphabet is found
+        } else {
+            this.name = "Prof." + parts[0];
+        }
     }
 
     public void view_schedule() {
