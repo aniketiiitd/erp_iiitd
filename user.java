@@ -12,6 +12,9 @@ public class user {
 
     }
 
+    public user() {
+    }
+
     public void get_details() {
         System.out.printf("ID: %s\nPassword: %s\nContact number: %d\n", this.id, this.password, this.contactnum);
     }

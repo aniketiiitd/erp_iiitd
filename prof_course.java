@@ -4,6 +4,10 @@ public class prof_course extends course {
 
     private int enrol_lim;
     private ArrayList<student> studlist = new ArrayList<>();
+    private int num_enr = 0;
+    private ArrayList<Integer> int_feedback = new ArrayList<>();
+    private ArrayList<String> str_feedback = new ArrayList<>();
+    private ArrayList<teaching_assnt> ta_list = new ArrayList<>();
 
     public prof_course(int enrol_lim, int credits, String code, String title, String prereq,
             String timings,
@@ -87,4 +91,49 @@ public class prof_course extends course {
         this.studlist.remove(stud);
     }
 
+    public int get_num_enr() {
+        return this.num_enr;
+    }
+
+    public void set_num_enr(int val) {
+        if (val == 0) {
+            this.num_enr++;
+        } else {
+            this.num_enr--;
+        }
+
+    }
+
+    public void set_feedback_str(String feedback)
+
+    {
+        this.str_feedback.add(feedback);
+    }
+
+    public void set_feedback_int(int feedback)
+
+    {
+        this.int_feedback.add(feedback);
+    }
+
+    public void get_feedback() {
+
+        if (!this.str_feedback.isEmpty()) {
+            System.out.print("Reviews: ");
+            System.out.println(this.str_feedback);
+        }
+
+        if (!this.int_feedback.isEmpty()) {
+            System.out.print("Ratings: ");
+            System.out.println(this.int_feedback);
+        }
+    }
+
+    public void add_ta(teaching_assnt TA) {
+        this.ta_list.add(TA);
+    }
+
+    public ArrayList<teaching_assnt> get_ta_list() {
+        return this.ta_list;
+    }
 }

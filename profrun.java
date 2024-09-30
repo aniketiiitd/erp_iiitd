@@ -3,7 +3,7 @@ public class profrun implements usr_run {
     @Override
     public void displayoptions() {
         System.out.printf(
-                "1. Display courses\n2. Update course details\n3. View Schedule\n4. View enrolled students\n5. Give grade\n6. View personal info\n7. Log out\n");
+                "1. Display courses\n2. Update course details\n3. View Schedule\n4. View enrolled students\n5. Give grade\n6. View course feedback\n7. Get Teaching Assistants\n8. Show Teaching Assistants\n9. View personal info\n10. Log out\n");
     }
 
     @Override
@@ -12,7 +12,7 @@ public class profrun implements usr_run {
         System.out.printf("\n\tHello %s\n", loggedprof.getname());
         System.out.println("How can we help you?");
         this.displayoptions();
-        int choice = takeinp.intinp("Enter choice[1/2/.../7]: ");
+        int choice = takeinp.intinp("Enter choice[1/2/.../10]: ");
         while (true) {
             if (choice == 1) {
                 loggedprof.view_courses();
@@ -25,15 +25,21 @@ public class profrun implements usr_run {
             } else if (choice == 5) {
                 loggedprof.givegrade();
             } else if (choice == 6) {
-                loggedprof.get_details();
+                loggedprof.show_feedback();
             } else if (choice == 7) {
+                loggedprof.assign_ta();
+            } else if (choice == 8) {
+                loggedprof.display_ta();
+            } else if (choice == 9) {
+                loggedprof.get_details();
+            } else if (choice == 10) {
                 return;
             } else {
                 System.out.println("Invalid choice");
             }
 
             this.displayoptions();
-            choice = takeinp.intinp("Enter choice[1/2/.../7]: ");
+            choice = takeinp.intinp("Enter choice[1/2/.../10]: ");
         }
     }
 }

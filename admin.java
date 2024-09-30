@@ -119,10 +119,6 @@ public class admin {
 
         System.out.println("Sem finished, all records updated!");
     }
-    // public void filter_complaints()
-    // {
-
-    // }
 
     public void resolve_comp() {
         int choice = takeinp.intinp("Enter complaint ID: ");
@@ -134,6 +130,12 @@ public class admin {
             }
         }
         System.out.println("Complaint id not found");
+    }
+
+    public void finish_add_drop() {
+        student.set_add_drop(false);
+        System.out.println("Updated!");
+
     }
 
 }

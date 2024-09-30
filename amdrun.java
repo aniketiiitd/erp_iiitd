@@ -3,7 +3,7 @@ public class amdrun implements usr_run {
     @Override
     public void displayoptions() {
         System.out.printf(
-                "1. Display course catalog\n2. Add/Drop course\n3. View student records\n4. Update Student records\n5. Assign professor to course\n6. Manage complaints\n7. Finish Semester\n8. Log out\n");
+                "1. Display course catalog\n2. Add/Drop course\n3. View student records\n4. Update Student records\n5. Assign professor to course\n6. Manage complaints\n7. Finish Add Drop Period\n8. Finish Semester\n9. Log out\n");
     }
 
     @Override
@@ -12,7 +12,7 @@ public class amdrun implements usr_run {
         System.out.printf("\n\tHello Admin\n");
         System.out.println("How can we help you?");
         this.displayoptions();
-        int choice = takeinp.intinp("Enter choice[1/2/.../8]: ");
+        int choice = takeinp.intinp("Enter choice[1/2/.../9]: ");
         while (true) {
             if (choice == 1) {
                 loggedadmin.viewcourses();
@@ -27,19 +27,21 @@ public class amdrun implements usr_run {
             } else if (choice == 6) {
                 this.managecomplain(loggedadmin);
             } else if (choice == 7) {
-                loggedadmin.finishsem();
+                loggedadmin.finish_add_drop();
             } else if (choice == 8) {
+                loggedadmin.finishsem();
+            } else if (choice == 9) {
                 return;
             } else {
                 System.out.println("Invalid choice");
             }
 
             this.displayoptions();
-            choice = takeinp.intinp("Enter choice[1/2/.../8]: ");
+            choice = takeinp.intinp("Enter choice[1/2/.../9]: ");
         }
     }
 
-    public void managecomplain(admin loggedadmin) {
+    private void managecomplain(admin loggedadmin) {
         System.out.printf("\n\tComplaint Manager\n");
         System.out.printf("1.Display all complaints\n2.Filter complaints\n3.Resolve complains\n4.Go back\n");
         int opt = takeinp.intinp("Enter choice[1/2/3/4]: ");

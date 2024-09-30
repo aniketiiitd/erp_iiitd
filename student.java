@@ -9,9 +9,15 @@ public class student extends user {
     private ArrayList<stud_course> current = new ArrayList<>();
     private ArrayList<String> backlog = new ArrayList<>();
     private complaint myComplaint = null;
+    private static boolean add_drop = true;
+    private boolean isTA = false;
 
     public student(String ID, String pass) {
         super(ID, pass);
+    }
+
+    public student() {
+        super();
     }
 
     public void view_schedule() {
@@ -97,6 +103,7 @@ public class student extends user {
     }
 
     public void finishsem() {
+        this.isTA = false;
         Iterator<stud_course> iterator = this.current.iterator();
         while (iterator.hasNext()) {
             stud_course course = iterator.next();
@@ -135,13 +142,6 @@ public class student extends user {
             usermap.changepass(id, stud.password);
             System.out.println("Details updated!");
         }
-        // else if (choice == 2) {
-        // stud.id = takeinp.strinp("Enter new ID: ");
-        // // student std = usermap.getstd(id);
-        // usermap.changestdid(stud.id, stud);
-        // usermap.changepass(stud.id, stud.password);
-        // System.out.println("Details updated!");
-        // }
 
         else if (choice == 2) {
             stud.contactnum = takeinp.strinp("Enter new contact number: ");
@@ -150,5 +150,47 @@ public class student extends user {
             System.out.println("Invalid choice");
         }
 
+    }
+
+    public void finish_add_drop() {
+        add_drop = false;
+    }
+
+    public static boolean getaddrop() {
+        return add_drop;
+    }
+
+    public static void set_add_drop(boolean val) {
+        add_drop = val;
+    }
+
+    public void give_feedback() {
+        String choice = takeinp.strinp("Enter course code: ");
+        for (stud_course stcr : this.completed) {
+            if (choice.equals(stcr.code)) {
+                int val = takeinp.intinp("Do you want to enter a review or rating [1/2]: ");
+                if (val == 1) {
+                    String review = takeinp.strinp("Enter a review: ");
+                    feedback<String> myfeedback = new feedback<>(choice, review);
+                } else if (val == 2) {
+                    int rating = takeinp.intinp("Enter a rating: ");
+                    feedback<Integer> myfeedback = new feedback<>(choice, rating);
+
+                } else {
+                    System.out.println("Invalid choice");
+                }
+                return;
+            }
+        }
+
+        System.out.println("Course code not found");
+    }
+
+    public void set_ista(boolean val) {
+        this.isTA = val;
+    }
+
+    public boolean get_ista() {
+        return this.isTA;
     }
 }

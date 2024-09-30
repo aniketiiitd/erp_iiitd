@@ -1,12 +1,15 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class GradeToGPA {
-    // Corrected map declaration to use Integer
-    public static Map<String, Integer> gradeMap = new HashMap<>();
 
-    // Static block to initialize the map
+    public static Map<String, Integer> gradeMap = new HashMap<>();
+    public static ArrayList<String> gradelist = new ArrayList<>(
+            Arrays.asList("A+", "A", "A-", "B", "B-", "C", "C-", "F"));
     static {
+        gradeMap.put("A+", 10);
         gradeMap.put("A", 10);
         gradeMap.put("A-", 9);
         gradeMap.put("B", 8);

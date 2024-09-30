@@ -14,10 +14,10 @@ public class takeinp {
                 valid = true;
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Please enter an integer.");
-                scanner.nextLine(); // Clear the invalid input
+                scanner.nextLine();
             }
         }
-        scanner.nextLine(); // Consume the newline character left after nextInt()
+        scanner.nextLine(); 
         return val;
     }
 

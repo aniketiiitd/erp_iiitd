@@ -16,7 +16,7 @@ public class mkcourse {
         if (code.equals("SG101")) {
             cred = 2;
         }
-        prof_course prcr = new prof_course(100, cred, code, mapcourse.gettitle(code), mapcourse.getpreq(code),
+        prof_course prcr = new prof_course(3, cred, code, mapcourse.gettitle(code), mapcourse.getpreq(code),
                 time.get(num % 10),
                 time.get((num + 1) % 10), location.get(num % 6),
                 mapcourse.getsyllabus(code));
